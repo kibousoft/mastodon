@@ -2,7 +2,7 @@ class CreateDevices < ActiveRecord::Migration[5.0]
   def change
     create_table :devices do |t|
       t.integer :account_id, null: false
-      t.string :registration_id, null: false
+      t.string :registration_id, null: false, default: ''
 
       t.timestamps
     end
