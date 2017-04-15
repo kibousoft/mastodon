@@ -2,7 +2,7 @@ class CreateWebSettings < ActiveRecord::Migration[5.0]
   def change
     create_table :web_settings do |t|
       t.integer :user_id
-      t.json :data
+      t.text :data
 
       t.timestamps
     end
