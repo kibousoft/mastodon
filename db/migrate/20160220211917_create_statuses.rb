@@ -1,9 +1,9 @@
 class CreateStatuses < ActiveRecord::Migration
   def change
     create_table :statuses do |t|
-      t.string :uri, null: false, default: ''
+      t.string :uri, null: false
       t.integer :account_id, null: false
-      t.text :text, null: false, default: ''
+      t.text :text, null: false
 
       t.timestamps null: false
     end
