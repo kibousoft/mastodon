@@ -1,2 +1,10 @@
 ---
 :concurrency: 5
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:queues:
+  - default
+  - mailers
+  - pull
+  - push
