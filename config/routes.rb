@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web, at: 'sidekiq', as: :sidekiq
-    mount PgHero::Engine, at: 'pghero', as: :pghero
   end
 
   use_doorkeeper do

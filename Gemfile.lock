@@ -250,6 +250,7 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    mysql2 (0.4.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
@@ -274,9 +275,6 @@ GEM
       paperclip (>= 2.5.2)
     parser (2.4.0.0)
       ast (~> 2.2)
-    pg (0.20.0)
-    pghero (1.6.4)
-      activerecord
     pkg-config (1.1.7)
     powerpack (0.1.1)
     pry (0.10.4)
@@ -504,14 +502,13 @@ DEPENDENCIES
   link_header
   lograge
   microformats2
+  mysql2
   nokogiri
   oj
   ostatus2
   ox
   paperclip (~> 5.1)
   paperclip-av-transcoder
-  pg
-  pghero
   pkg-config
   pry-rails
   puma
