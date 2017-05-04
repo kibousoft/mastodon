@@ -64,6 +64,7 @@ gem 'autoprefixer-rails'
 # Added by Kibousoft
 gem 'omniauth-facebook'
 gem 'react-rails-img'
+gem 'json'
 
 group :development, :test do
   gem 'rspec-rails'

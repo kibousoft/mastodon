@@ -51,6 +51,10 @@
   .features-list
     .features-list__column
       %ul.fa-ul
+        - @explaine.each do |a|
+          %li
+            = fa_icon('li check-square')
+            = a
         %li
           = fa_icon('li check-square')
           日本国内法人運営
