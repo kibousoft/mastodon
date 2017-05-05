@@ -246,6 +246,10 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
                   callback_url: ENV['FACEBOOK_CALLBACK_URL']
 
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
+  # config.omniauth :github, ENV['GITHUB_APP_ID'], ENV['GITHUB_APP_SECRET'],
+  #                 callback_url: ENV['GITHUB_CALLBACK_URL']
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

@@ -10,3 +10,6 @@
 
 = link_to button_tag("Log in with facebook", class: "facebook-login-button")  , user_facebook_omniauth_authorize_path
 .form-footer= render "auth/shared/links"
+
+= link_to button_tag("Log in with github", class: "github-login-button")  , user_github_omniauth_authorize_path
+.form-footer= render "auth/shared/links"
