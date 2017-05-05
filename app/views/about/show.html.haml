@@ -46,6 +46,10 @@
     facebook認証するだけで、自動で会員登録できます。
     %br
     facebookのタイムラインに無断で投稿することはありません。
+  .oauth-signup
+    = link_to button_tag("github", class: "github-login-button"), user_facebook_omniauth_authorize_path
+    %br
+    github認証するだけで、自動で会員登録できます。
   %h3 このインスタンスの特徴
 
   .features-list
