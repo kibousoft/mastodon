@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :two_factor_authenticatable, :two_factor_backupable,
          otp_secret_encryption_key: ENV['OTP_SECRET'],
          otp_number_of_backup_codes: 10
-  devise :omniauthable, { omniauth_providers: [:facebook] }
+  devise :omniauthable, { omniauth_providers: [:facebook , :github] }
 
   belongs_to :account, inverse_of: :user, required: true
   accepts_nested_attributes_for :account

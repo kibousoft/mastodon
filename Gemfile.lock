@@ -520,6 +520,7 @@ DEPENDENCIES
   httplog
   i18n-tasks (~> 0.9.6)
   jquery-rails
+  json
   kaminari
   letter_opener
   letter_opener_web
