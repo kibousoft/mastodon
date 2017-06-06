@@ -38,14 +38,16 @@
     "intl": "^1.2.5",
     "jsdom": "^9.11.0",
     "mocha": "^3.2.0",
+    "mysql": "^2.13.0",
     "node-sass": "^4.5.2",
     "npmlog": "^4.0.2",
-    "mysql": "^2.13.0",
+    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-addons-perf": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-adsense": "^0.0.2",
     "react-autosuggest": "^7.0.1",
     "react-decoration": "^1.4.0",
     "react-dom": "^15.4.2",
@@ -74,8 +76,7 @@
     "uuid": "^3.0.1",
     "webpack": "^2.2.1",
     "websocket.js": "^0.1.7",
-    "ws": "^2.1.0",
-    "react-adsense": "^0.0.2"
+    "ws": "^2.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.2",
