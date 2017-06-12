@@ -40,6 +40,12 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # S/MIME
+  config.smime_sign = true
+  config.smime_sign_certificate_path = Rails.root.join('config/smime/dev.crt')
+  config.smime_sign_private_key_path = Rails.root.join('config/smime/dev.pem')
+  config.smime_sign_private_key_phrase = 'pass_phrase'
 end
 
 Paperclip::Attachment.default_options[:path] = "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension"

@@ -8,6 +8,7 @@ default: &default
 development:
   <<: *default
   database: mastodon_development
+  password: pass
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -15,6 +16,7 @@ development:
 test:
   <<: *default
   database: mastodon_test
+  password: pass
 
 production:
   <<: *default
