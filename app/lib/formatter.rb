@@ -126,7 +126,7 @@ class Formatter
           :html_open => '<span class="fa fa-spin">', :html_close => '</span>',
           :description => 'Make text spin',
           :example => 'This is [spin]spin[/spin].'},
-      })
+      }, :enable, :i, :b, :color, :quote, :code, :size, :u, :s, :spin)
     rescue Exception => e
     end
     html
