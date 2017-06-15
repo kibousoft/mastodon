@@ -5,6 +5,7 @@ class UserMailer < Devise::Mailer
   layout 'mailer'
 
   helper :instance
+  register_interceptor MessageInterceptor if ENV['USE_SMTP_SMIME'].present?
 
   def confirmation_instructions(user, token, _opts = {})
     @resource = user

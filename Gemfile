@@ -68,6 +68,7 @@ gem 'omniauth-github'
 gem 'react-rails-img'
 gem 'json'
 gem 'default_value_for', '~> 3.0.0'
+gem 'ruby-bbcode'
 
 group :development, :test do
   gem 'rspec-rails'

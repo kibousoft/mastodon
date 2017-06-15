@@ -18,6 +18,7 @@ class Formatter
     html = html.delete("\n")
     html = link_mentions(html, status.mentions)
     html = link_hashtags(html)
+    html = format_bbcode(html)
 
     html.html_safe # rubocop:disable Rails/OutputSafety
   end
@@ -37,6 +38,7 @@ class Formatter
     html = encode_and_link_urls(account.note)
     html = link_accounts(html)
     html = link_hashtags(html)
+    html = format_bbcode(html)
 
     html.html_safe # rubocop:disable Rails/OutputSafety
   end
@@ -115,5 +117,18 @@ class Formatter
 
   def mention_html(match, account)
     "#{match.split('@').first}<span class=\"h-card\"><a href=\"#{TagManager.instance.url_for(account)}\" class=\"u-url mention\">@<span>#{account.username}</span></a></span>"
+  end
+
+  def format_bbcode(html)
+    begin
+      html = html.bbcode_to_html(false, {
+        :spin => {
+          :html_open => '<span class="fa fa-spin">', :html_close => '</span>',
+          :description => 'Make text spin',
+          :example => 'This is [spin]spin[/spin].'},
+      })
+    rescue Exception => e
+    end
+    html
   end
 end

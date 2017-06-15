@@ -9,6 +9,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 import SearchContainer from './containers/search_container';
 import { Motion, spring } from 'react-motion';
 import SearchResultsContainer from './containers/search_results_container';
+import AdSense from 'react-adsense';
 
 const messages = defineMessages({
   start: { id: 'getting_started.heading', defaultMessage: 'Getting started' },
@@ -68,6 +69,12 @@ const Compose = React.createClass({
           <div className='drawer__inner'>
             <NavigationContainer />
             <ComposeFormContainer />
+            <div className='drawer__ad'>
+              <AdSense.Google client='ca-pub-7162827353579884'
+                              slot='4258622051'
+                              style={{ display: 'inline-block', width: '300px', height: '250px' }}
+                              format='' />
+            </div>
           </div>
 
           <Motion defaultStyle={{ x: -100 }} style={{ x: spring(showSearch ? 0 : -100, { stiffness: 210, damping: 20 }) }}>

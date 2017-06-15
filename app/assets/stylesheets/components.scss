@@ -820,7 +820,7 @@ a.status__content__spoiler-link {
 }
 
 .drawer {
-  width: 300px;
+  width: 320px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -930,6 +930,12 @@ a.status__content__spoiler-link {
   &.darker {
     background: $color1;
   }
+}
+
+.drawer__ad {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pseudo-drawer {
