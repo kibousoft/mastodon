@@ -21,6 +21,10 @@
     = stylesheet_link_tag stylesheet_for_layout, media: 'all'
     = csrf_meta_tags
 
+    %script{type: 'text/javascript', src: "https://use.typekit.net/#{ENV['TYPEKIT_ID']}.js"}
+    %script
+      try{Typekit.load({ async: true });}catch(e){}
+
     = yield :header_tags
 
   - body_classes ||= @body_classes

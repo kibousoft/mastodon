@@ -14,3 +14,30 @@ div.quote {
 pre {
   border: solid white 1px;
 }
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: .5
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: .5
+  }
+}
+
+.pulse-loading {
+  -webkit-animation: pulse 1s ease-in-out infinite;
+  animation: pulse 1s ease-in-out infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate
+}

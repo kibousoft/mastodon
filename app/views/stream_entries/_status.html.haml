@@ -29,4 +29,8 @@
   = render (centered ? 'stream_entries/detailed_status' : 'stream_entries/simple_status'), status: status.proper
 
 - if include_threads
-  = render partial: 'stream_entries/status', collection: @descendants, as: :status, locals: { is_successor: true, parent_id: status.id}
+  - if @is_full
+    = render partial: 'stream_entries/status', collection: @descendants, as: :status, locals: { is_successor: true, parent_id: status.id}
+  - else
+    %div.full-link
+      = link_to '関連トゥートを表示', '?full=true', class: 'button'

@@ -56,6 +56,10 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = true
+  config.assets.digest = false
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

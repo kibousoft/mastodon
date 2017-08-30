@@ -9,9 +9,13 @@ class StatusesController < ApplicationController
   before_action :check_account_suspension
 
   def show
-    @ancestors   = @status.reply? ? cache_collection(@status.ancestors(current_account), Status) : []
-    @descendants = cache_collection(@status.descendants(current_account), Status)
+    @is_full = params[:full].present?
 
+    if @is_full
+      @ancestors   = @status.reply? ? cache_collection(@status.ancestors(current_account), Status) : []
+      @descendants = cache_collection(@status.descendants(current_account), Status)
+    end
+    
     render 'stream_entries/show'
   end
 

@@ -106,17 +106,13 @@ const StatusActionBar = React.createClass({
       reply_title = intl.formatMessage(messages.replyAll);
     }
 
-    let content_for_share = status.get('url') + "\n" + status.getIn(['account', 'username']) + "さんのマストドンの投稿：\n" + status.get('content').replace(/<br \/>/g, '\n').replace(/<\/p><p>/g, '\n\n').replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/<\/?[\w\s="/.':;#-\/]+>/g,'')
-    if (content_for_share.length > 140) {
-      content_for_share = content_for_share.substr(0, 140)
-    }
-
     return (
       <div style={{ marginTop: '10px', overflow: 'hidden' }}>
         <div style={{ float: 'left', marginRight: '18px'}}><IconButton title={reply_title} icon={reply_icon} onClick={this.handleReplyClick} /></div>
         <div style={{ float: 'left', marginRight: '18px'}}><IconButton disabled={status.get('visibility') === 'private' || status.get('visibility') === 'direct'} active={status.get('reblogged')} title={intl.formatMessage(messages.reblog)} icon={reblogIcon} onClick={this.handleReblogClick} /></div>
         <div style={{ float: 'left', marginRight: '18px'}}><IconButton animate={true} active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='star' onClick={this.handleFavouriteClick} activeStyle={{ color: '#ca8f04' }} /></div>
-        <div style={{ float: 'left', marginRight: '18px'}}><a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(content_for_share)} target="_blank" rel="noreferrer noopener"><img src={Img.assetPath("twitter_icon.png")}/></a></div>
+        <div style={{ float: 'left', marginRight: '18px'}}><a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(status.get('url'))} target="_blank" rel="noreferrer noopener"><img src={Img.assetPath("twitter_icon.png")}/></a></div>
+        <div style={{ float: 'left', marginRight: '18px'}}><a href={"https://kibousoft.net/mastoshare.html#" + encodeURIComponent(status.get('url'))} target="_blank" rel="noreferrer noopener"><img src={Img.assetPath("mastoshare_icon.png")}/></a></div>
         <div style={{ width: '18px', height: '18px', float: 'left' }}>
           <DropdownMenu items={menu} icon='ellipsis-h' size={18} direction="right" />
         </div>

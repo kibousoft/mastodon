@@ -69,6 +69,7 @@ gem 'react-rails-img'
 gem 'json'
 gem 'default_value_for', '~> 3.0.0'
 gem 'ruby-bbcode'
+gem 'non-stupid-digest-assets'
 
 group :development, :test do
   gem 'rspec-rails'
