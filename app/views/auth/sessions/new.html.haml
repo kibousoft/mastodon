@@ -14,13 +14,12 @@
   .actions
     = f.button :button, t('auth.login'), type: :submit
 
-- if devise_mapping.omniauthable? and resource_class.omniauth_providers.any?
-  .simple_form.alternative-login
-    %h4= t('auth.or_log_in_with')
-
-    .actions
-      - resource_class.omniauth_providers.each do |provider|
-        = link_to omniauth_authorize_path(resource_name, provider), class: "button button-#{provider}" do
-          = t("auth.providers.#{provider}", default: provider.to_s.chomp("_oauth2").capitalize)
+%div.oauth-signin
+  %h3= "ソーシャルログイン"
+  %ul.login-button-list
+    %li
+      = link_to button_tag("Log in with facebook", class: "facebook-login-button")  , user_facebook_omniauth_authorize_path
+    %li
+      = link_to button_tag("Log in with github", class: "github-login-button")  , user_github_omniauth_authorize_path
 
 .form-footer= render 'auth/shared/links'
