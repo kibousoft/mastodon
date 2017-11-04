@@ -23,6 +23,19 @@
     color: $primary-text-color;
   }
 
+  p {
+    font-size: 10px;
+  }
+
+}
+
+.email-login-button {
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  background-color: #4bace9;
+  border: none;
+  border-radius: 5px;
 }
 
 .facebook-login-button {
