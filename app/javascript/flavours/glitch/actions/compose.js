@@ -190,7 +190,19 @@ export function uploadCompose(files) {
         dispatch(uploadComposeProgress(e.loaded, e.total));
       },
     }).then(function (response) {
-      dispatch(uploadComposeSuccess(response.data));
+//      dispatch(uploadComposeSuccess(response.data));
+
+      //NSFWチェック
+      if(!checkNSFW()){
+        if(window.confirm('アップロードファイルがNSFWチェックに引っかかっています。このまま使用しますか？')){
+          // OKボタン押下時(そのまま処理)
+          dispatch(uploadComposeSuccess(response.data));
+        } else {
+          // キャンセルボタン押下時の処理（警告ダイアログを表示）
+          alert('アップロードがキャンセルされました');
+          dispatch(undoUploadCompose(response.data));
+        }
+      }
     }).catch(function (error) {
       dispatch(uploadComposeFail(error));
     });
@@ -387,3 +399,7 @@ export function insertEmojiCompose(position, emoji) {
     emoji,
   };
 };
+
+export function checkNSFW(){
+  return false;
+}
