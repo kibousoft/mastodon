@@ -93,6 +93,7 @@ gem 'json-ld', '~> 2.2'
 gem 'rdf-normalize', '~> 0.3'
 
 # Added by Kibousoft
+gem 'ruby-bbcode'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'react-rails-img'

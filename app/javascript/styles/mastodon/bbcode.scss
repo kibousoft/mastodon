@@ -1,0 +1,102 @@
+$bbcode1: $classic-highlight-color !default;
+$bbcode2: lighten($black, 15%) !default;
+
+.faicon_FTL {
+  display: none;
+}
+
+.bbcode {
+  &__pulse {
+    animation: pulse 1s ease-in-out infinite;
+    animation-direction: alternate;
+  }
+
+  &__spin {
+    display: inline-block;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+  }
+
+  &__b {
+    font-family: 'kozuka-gothic-pro', sans-serif;
+    font-weight: 900;
+  }
+
+  &__i {
+    font-family: 'kozuka-gothic-pro', sans-serif;
+    font-style: italic;
+    -moz-font-feature-settings: 'ital';
+    -webkit-font-feature-settings: 'ital';
+    font-feature-settings: 'ital';
+  }
+
+  &__flip-horizontal {
+    display: inline-block;
+    -webkit-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+  }
+
+  &__flip-vertical {
+    display: inline-block;
+    -webkit-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+  }
+
+  @for $i from 2 through 5 {
+    &__large-#{$i}x {
+      font-size: #{$i}em;
+
+      & .emojione {
+        width: #{18 * $i}px !important;
+        height:  #{18 * $i}px !important;
+      }
+    }
+  }
+
+  /* attr color is not supported!!!
+    &__color {
+      color: attr(data-bbcodecolor color);
+    }
+  */
+
+  &__faicon {
+    display: inline-block !important;
+  }
+
+  &__quote {
+    padding: 10px 10px;
+    border-left: 5px solid $bbcode1;
+  }
+
+  &__code {
+    display: block;
+    padding: 9px;
+    line-height: 1.42857143;
+    color: $white;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: $bbcode2;
+    border: 1px solid $bbcode2;
+    border-radius: 4px;
+    overflow-x: scroll;
+  }
+
+  &__u {
+    text-decoration: underline;
+  }
+
+  &__s {
+    text-decoration: line-through;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

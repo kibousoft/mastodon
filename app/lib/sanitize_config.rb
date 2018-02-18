@@ -14,6 +14,7 @@ class Sanitize
         next true if e =~ /^(h|p|u|dt|e)-/ # microformats classes
         next true if e =~ /^(mention|hashtag)$/ # semantic classes
         next true if e =~ /^(ellipsis|invisible)$/ # link formatting classes
+        next true if e =~ /^bbcode__([a-z2-5\-]+)$/ # bbcode
       end
 
       node['class'] = class_list.join(' ')
