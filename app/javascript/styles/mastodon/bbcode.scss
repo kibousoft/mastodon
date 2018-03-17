@@ -29,67 +29,31 @@ $bbcode2: lighten($black, 15%) !default;
     -webkit-font-feature-settings: 'ital';
     font-feature-settings: 'ital';
   }
+}
 
-  &__flip-horizontal {
-    display: inline-block;
-    -webkit-transform: scale(-1, 1);
-    -ms-transform: scale(-1, 1);
-    transform: scale(-1, 1);
+@for $i from 2 through 5 {
+  .fa-#{$i}x .emojione {
+    width: #{18 * $i}px !important;
+    height:  #{18 * $i}px !important;
   }
+}
 
-  &__flip-vertical {
-    display: inline-block;
-    -webkit-transform: scale(1, -1);
-    -ms-transform: scale(1, -1);
-    transform: scale(1, -1);
-  }
+div.quote {
+  padding: 10px 10px;
+  border-left: 5px solid $bbcode1;
+}
 
-  @for $i from 2 through 5 {
-    &__large-#{$i}x {
-      font-size: #{$i}em;
-
-      & .emojione {
-        width: #{18 * $i}px !important;
-        height:  #{18 * $i}px !important;
-      }
-    }
-  }
-
-  /* attr color is not supported!!!
-    &__color {
-      color: attr(data-bbcodecolor color);
-    }
-  */
-
-  &__faicon {
-    display: inline-block !important;
-  }
-
-  &__quote {
-    padding: 10px 10px;
-    border-left: 5px solid $bbcode1;
-  }
-
-  &__code {
-    display: block;
-    padding: 9px;
-    line-height: 1.42857143;
-    color: $white;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: $bbcode2;
-    border: 1px solid $bbcode2;
-    border-radius: 4px;
-    overflow-x: scroll;
-  }
-
-  &__u {
-    text-decoration: underline;
-  }
-
-  &__s {
-    text-decoration: line-through;
-  }
+pre {
+  display: block;
+  padding: 9px;
+  line-height: 1.42857143;
+  color: $white;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: $bbcode2;
+  border: 1px solid $bbcode2;
+  border-radius: 4px;
+  overflow-x: scroll;
 }
 
 @keyframes pulse {
