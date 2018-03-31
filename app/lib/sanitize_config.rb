@@ -14,7 +14,11 @@ class Sanitize
         next true if e =~ /^(h|p|u|dt|e)-/ # microformats classes
         next true if e =~ /^(mention|hashtag)$/ # semantic classes
         next true if e =~ /^(ellipsis|invisible)$/ # link formatting classes
-        next true if e =~ /^bbcode__([a-z2-5\-]+)$/ # bbcode
+        next true if e =~ /^fa$/ # font awesome
+        next true if e =~ /^fa-flip-(horizontal|vertical)$/ # font awesome
+        next true if e =~ /^fa-(2x|3x|4x|5x)$/ # font awesome
+        next true if e =~ /^bbcode__(spin|pulse|b|i)$/ # bbcode
+        next true if e =~ /^faicon_FTL$/ # bbcode
       end
 
       node['class'] = class_list.join(' ')

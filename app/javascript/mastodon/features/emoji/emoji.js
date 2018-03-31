@@ -69,12 +69,7 @@ const emojify = (str, customEmojis = {}) => {
   return rtn + str;
 };
 
-const emojify_bbcode = (str, customEmojis = {}) => [
-  { re: /<span class="bbcode__color" data-bbcodecolor="/g, mode: 'color' },
-  { re: /<span class="bbcode__size" data-bbcodesize="/g, mode: 'font-size' },
-].reduce((text, e) => text.replace(e.re, `<span style="${e.mode}: `), emojify(str, customEmojis));
-
-export default emojify_bbcode;
+export default emojify;
 
 export const buildCustomEmojis = (customEmojis) => {
   const emojis = [];
