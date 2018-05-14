@@ -14,4 +14,10 @@
 #
 
 class IcoRequest < ApplicationRecord
+  belongs_to :user
+  belongs_to :ico_event
+
+  validates :amount, presence: true, numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 2147483647}
+  validates :email, presence: true
+  validates :eth_wallet_address, presence: true
 end
