@@ -1,0 +1,14 @@
+en:
+  ico_request:
+    check_1: I carefully read whitepaper and understand the contents of ICO
+    check_2: (Japan User Only) PHOTON GOLD は 法定通貨との交換や商品売買には利用できません（前払式発行手段ではありません）
+    check_3: Participation in ICO is permitted in the country or region where you reside.
+             (You don’t reside in China or the United States of America.)
+    check_4: I do not use ICO for money laundering.
+  activerecord:
+      attributes:
+        ico_request:
+          amount: Amount（1PHOTON GOLD = 0.000011ETH）
+          email: E-mail address
+          eth_wallet_address: Entry source ETH address
+          token_wallet_address: Wallet address for saving PHOTON GOLD

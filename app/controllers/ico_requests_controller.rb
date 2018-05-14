@@ -21,7 +21,7 @@ class IcoRequestsController < ApplicationController
 
   # POST /ico_requests
   def create
-    unless ico_request_params[:check_1] && ico_request_params[:check_2] && ico_request_params[:check_3] && ico_request_params[:check_4]
+    unless ico_request_params[:check_1] && ico_request_params[:check_3] && ico_request_params[:check_4]
       redirect_to new_ico_requests_path, notice: 'Please check confirm items'
         return
     end
