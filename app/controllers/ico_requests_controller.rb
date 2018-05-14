@@ -21,16 +21,17 @@ class IcoRequestsController < ApplicationController
 
   # POST /ico_requests
   def create
-    unless ico_request_params[:check_1] && ico_request_params[:check_3] && ico_request_params[:check_4]
+    unless ico_request_check_params[:check_1] && ico_request_check_params[:check_3] && ico_request_check_params[:check_4]
       redirect_to new_ico_requests_path, notice: 'Please check confirm items'
-        return
+      return
     end
     @ico_request = IcoRequest.new(ico_request_params)
+    @ico_request.user = current_user if current_user.present?
 
     if @ico_request.save
       redirect_to 'https://photon.gold/'
     else
-      render :new
+      render :new, notice: 'Validation failed'
     end
   end
 
@@ -57,6 +58,10 @@ class IcoRequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def ico_request_params
-      params.require(:ico_request).permit(:amount, :email, :eth_wallet_address, :token_wallet_address, :check_1, :check_2, :check_3, :check_4)
+      params.require(:ico_request).permit(:amount, :email, :eth_wallet_address, :token_wallet_address)
+    end
+
+    def ico_request_check_params
+      params.permit(:check_1, :check_2, :check_3, :check_4)
     end
 end
