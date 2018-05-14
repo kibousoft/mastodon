@@ -1,7 +1,4 @@
-%h1 Editing ico_request
-
-= render 'form'
-
-= link_to 'Show', @ico_request
-\|
-= link_to 'Back', ico_requests_path
+- model_class = IcoRequest
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

@@ -1,11 +1,15 @@
-= simple_form_for(@ico_request) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :amount
-    = f.input :email
-    = f.input :eth_wallet_address
-    = f.input :token_wallet_address
-
-  .form-actions
-    = f.button :submit
+= simple_form_for @ico_request, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :user_id
+  = f.error_span :user_id
+  = f.input :ico_event_id
+  = f.error_span :ico_event_id
+  = f.input :amount
+  = f.error_span :amount
+  = f.input :email
+  = f.error_span :email
+  = f.input :eth_wallet_address
+  = f.error_span :eth_wallet_address
+  = f.input :token_wallet_address
+  = f.error_span :token_wallet_address
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), ico_requests_path, :class => 'btn btn-default'
