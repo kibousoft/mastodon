@@ -1,0 +1,27 @@
+%h1 Listing ico_requests
+
+%table
+  %thead
+    %tr
+      %th Amount
+      %th Email
+      %th Eth wallet address
+      %th Token wallet address
+      %th
+      %th
+      %th
+
+  %tbody
+    - @ico_requests.each do |ico_request|
+      %tr
+        %td= ico_request.amount
+        %td= ico_request.email
+        %td= ico_request.eth_wallet_address
+        %td= ico_request.token_wallet_address
+        %td= link_to 'Show', ico_request
+        %td= link_to 'Edit', edit_ico_request_path(ico_request)
+        %td= link_to 'Destroy', ico_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ico request', new_ico_request_path
