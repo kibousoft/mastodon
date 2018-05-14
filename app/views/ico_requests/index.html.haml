@@ -1,27 +1,32 @@
-%h1 Listing ico_requests
-
-%table
+- model_class = IcoRequest
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
   %thead
     %tr
-      %th Amount
-      %th Email
-      %th Eth wallet address
-      %th Token wallet address
-      %th
-      %th
-      %th
-
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:ico_event_id)
+      %th= model_class.human_attribute_name(:amount)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:eth_wallet_address)
+      %th= model_class.human_attribute_name(:token_wallet_address)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @ico_requests.each do |ico_request|
       %tr
+        %td= link_to ico_request.id, ico_request_path(ico_request)
+        %td= ico_request.user_id
+        %td= ico_request.ico_event_id
         %td= ico_request.amount
         %td= ico_request.email
         %td= ico_request.eth_wallet_address
         %td= ico_request.token_wallet_address
-        %td= link_to 'Show', ico_request
-        %td= link_to 'Edit', edit_ico_request_path(ico_request)
-        %td= link_to 'Destroy', ico_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td=l ico_request.created_at
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), ico_request_path(ico_request), :class => 'btn btn-default btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_ico_request_path(ico_request), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), ico_request_path(ico_request), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
-%br
-
-= link_to 'New Ico request', new_ico_request_path
+= link_to t('.new', :default => t("helpers.links.new")), new_ico_request_path, :class => 'btn btn-primary'

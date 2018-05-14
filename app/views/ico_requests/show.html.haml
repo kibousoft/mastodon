@@ -1,18 +1,33 @@
-%p#notice= notice
+- model_class = IcoRequest
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
-  %b Amount:
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @ico_request.user_id
+%p
+  %strong= model_class.human_attribute_name(:ico_event_id) + ':'
+  %br
+  = @ico_request.ico_event_id
+%p
+  %strong= model_class.human_attribute_name(:amount) + ':'
+  %br
   = @ico_request.amount
 %p
-  %b Email:
+  %strong= model_class.human_attribute_name(:email) + ':'
+  %br
   = @ico_request.email
 %p
-  %b Eth wallet address:
+  %strong= model_class.human_attribute_name(:eth_wallet_address) + ':'
+  %br
   = @ico_request.eth_wallet_address
 %p
-  %b Token wallet address:
+  %strong= model_class.human_attribute_name(:token_wallet_address) + ':'
+  %br
   = @ico_request.token_wallet_address
 
-= link_to 'Edit', edit_ico_request_path(@ico_request)
-\|
-= link_to 'Back', ico_requests_path
+
+= link_to t('.back', :default => t("helpers.links.back")), ico_requests_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_ico_request_path(@ico_request), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), ico_request_path(@ico_request), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
