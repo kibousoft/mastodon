@@ -1,4 +1,6 @@
 %div.ico-request
+  - flash.each do |key, value|
+    = content_tag :div, value, class: "alert"
   = image_tag '/photon/logo.png'
   %h1 Pre-ICO Request
 
@@ -18,16 +20,16 @@
     = f.error_span :token_wallet_address
 
     %div.checkboxes
-      = check_box_tag :check_1
+      = check_box_tag "ico_request[check_1]"
       = I18n.t('ico_request.check_1')
       %br
-      = check_box_tag :check_2
+      = check_box_tag "ico_request[check_2]"
       = I18n.t('ico_request.check_2')
       %br
-      = check_box_tag :check_3
+      = check_box_tag "ico_request[check_3]"
       = I18n.t('ico_request.check_3')
       %br
-      = check_box_tag :check_4
+      = check_box_tag "ico_request[check_4]"
       = I18n.t('ico_request.check_4')
 
     = f.button :submit, :class => 'button', id: 'ico-request-submit'
