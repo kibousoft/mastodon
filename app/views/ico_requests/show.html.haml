@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @ico_request.amount
+%p
+  %b Email:
+  = @ico_request.email
+%p
+  %b Eth wallet address:
+  = @ico_request.eth_wallet_address
+%p
+  %b Token wallet address:
+  = @ico_request.token_wallet_address
+
+= link_to 'Edit', edit_ico_request_path(@ico_request)
+\|
+= link_to 'Back', ico_requests_path

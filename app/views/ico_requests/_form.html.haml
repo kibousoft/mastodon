@@ -1,0 +1,11 @@
+= simple_form_for(@ico_request) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :amount
+    = f.input :email
+    = f.input :eth_wallet_address
+    = f.input :token_wallet_address
+
+  .form-actions
+    = f.button :submit
