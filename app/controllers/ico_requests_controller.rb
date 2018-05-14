@@ -29,7 +29,11 @@ class IcoRequestsController < ApplicationController
     @ico_request.user = current_user if current_user.present?
 
     if @ico_request.save
-      redirect_to 'https://photon.gold/'
+      if current_user.present?
+        redirect_to '/share?text=I%20participated%20in%20the%20pre-ICO%20of%20PHOTON%20GOLD.%0Ahttps%3A%2F%2Fphoton.gold%2F'
+      else
+        redirect_to 'https://photon.gold/'
+      end
     else
       render :new, notice: 'Validation failed'
     end
