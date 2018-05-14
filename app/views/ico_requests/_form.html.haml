@@ -7,12 +7,15 @@
   - model_class = IcoRequest
   = simple_form_for @ico_request, :html => { :class => 'form-horizontal' } do |f|
     = model_class.human_attribute_name(:amount)
+    %span.required-mark *
     = f.input :amount
     = f.error_span :amount
     = model_class.human_attribute_name(:email)
+    %span.required-mark *
     = f.input :email
     = f.error_span :email
     = model_class.human_attribute_name(:eth_wallet_address)
+    %span.required-mark *
     = f.input :eth_wallet_address
     = f.error_span :eth_wallet_address
     = model_class.human_attribute_name(:token_wallet_address)
@@ -22,14 +25,18 @@
     %div.checkboxes
       = check_box_tag "ico_request[check_1]"
       = I18n.t('ico_request.check_1')
+      %span.required-mark *
       %br
       = check_box_tag "ico_request[check_2]"
       = I18n.t('ico_request.check_2')
+      %span.required-mark *
       %br
       = check_box_tag "ico_request[check_3]"
       = I18n.t('ico_request.check_3')
+      %span.required-mark *
       %br
       = check_box_tag "ico_request[check_4]"
       = I18n.t('ico_request.check_4')
+      %span.required-mark *
 
     = f.button :submit, :class => 'button', id: 'ico-request-submit'
