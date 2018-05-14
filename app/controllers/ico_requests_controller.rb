@@ -27,6 +27,7 @@ class IcoRequestsController < ApplicationController
     end
     @ico_request = IcoRequest.new(ico_request_params)
     @ico_request.user = current_user if current_user.present?
+    @ico_request.ico_event_id = 1
 
     if @ico_request.save
       if current_user.present?

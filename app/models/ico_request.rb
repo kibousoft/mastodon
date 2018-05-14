@@ -15,7 +15,6 @@
 
 class IcoRequest < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :ico_event, optional: true
 
   validates :amount, presence: true, numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 1000000000}
   validates :email, presence: true
