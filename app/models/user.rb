@@ -29,6 +29,8 @@
 #  otp_required_for_login    :boolean          default(FALSE), not null
 #  last_emailed_at           :datetime
 #  otp_backup_codes          :string           is an Array
+#  provider                  :string
+#  uid                       :string
 #  filtered_languages        :string           default([]), not null, is an Array
 #  account_id                :integer          not null
 #  disabled                  :boolean          default(FALSE), not null

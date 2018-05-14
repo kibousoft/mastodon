@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106000232) do
+ActiveRecord::Schema.define(version: 20180514080302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,34 @@ ActiveRecord::Schema.define(version: 20180106000232) do
     t.bigint "target_account_id", null: false
     t.boolean "show_reblogs", default: true, null: false
     t.index ["account_id", "target_account_id"], name: "index_follows_on_account_id_and_target_account_id", unique: true
+  end
+
+  create_table "ico_events", force: :cascade do |t|
+    t.integer "ico_token_id"
+    t.datetime "begin_at"
+    t.datetime "end_at"
+    t.float "sale_limit"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ico_requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "ico_event_id"
+    t.float "amount"
+    t.string "email"
+    t.string "eth_wallet_address"
+    t.string "token_wallet_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ico_tokens", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "imports", force: :cascade do |t|
