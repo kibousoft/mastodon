@@ -98,6 +98,9 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'react-rails-img'
 gem 'json'
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'fabrication', '~> 2.20'
