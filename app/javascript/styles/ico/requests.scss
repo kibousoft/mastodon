@@ -1,0 +1,25 @@
+.ico-request {
+  h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+  }
+  .alert {
+    background-color: palevioletred;
+    margin: 10px;
+    font-weight: bold;
+  }
+  .required-mark {
+    color: red;
+  }
+  a:link {
+    color: white;
+  }
+  a:hover {
+    color: white;
+  }
+  a:visited {
+    color: white;
+  }
+}

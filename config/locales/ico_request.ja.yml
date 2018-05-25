@@ -1,0 +1,13 @@
+ja:
+  ico_request:
+    check_1: Whitepaperをよく読み、ICOの内容を理解しています
+    check_2: (Japan User Only) PHOTON GOLD は 法定通貨との交換や商品売買には利用できません（前払式発行手段ではありません）
+    check_3: 居住している地域でICOの参加は認められています（中国、アメリカ合衆国には居住していません）
+    check_4: マネーロンダリングに利用しません
+  activerecord:
+      attributes:
+        ico_request:
+          amount: 購入数（1PHOTON GOLD = 0.000011ETH）
+          email: メールアドレス
+          eth_wallet_address: 入金元Etheriumアドレス
+          token_wallet_address: PHOTON GOLD保存先ウォレットアドレス

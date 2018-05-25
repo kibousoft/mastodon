@@ -1,0 +1,13 @@
+zh-HK:
+  ico_request:
+    check_1: 請詳閱白皮書與ICO內容。
+    check_2: (Japan User Only) PHOTON GOLD は 法定通貨との交換や商品売買には利用できません（前払式発行手段ではありません）
+    check_3: 確認居住區域核准參與ICO事項（非住在中國大陸、美國）
+    check_4: 杜絕洗錢之相關行為
+  activerecord:
+      attributes:
+        ico_request:
+          amount: 購買數量（1PHOTON GOLD = 0.000011ETH）
+          email: E-Mail地址
+          eth_wallet_address: 輸入源ETH地址
+          token_wallet_address: PHOTON GOLD保存目的地錢包地址
