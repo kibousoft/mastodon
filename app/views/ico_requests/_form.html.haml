@@ -8,6 +8,7 @@
   = simple_form_for @ico_request, :html => { :class => 'form-horizontal' } do |f|
     = model_class.human_attribute_name(:amount)
     %span.required-mark *
+    %span#required_eth
     = f.input :amount
 
     = model_class.human_attribute_name(:email)
@@ -44,6 +45,26 @@
       = f.hidden_field :language
 
     = f.button :submit, :class => 'button', id: 'ico-request-submit'
+
+  :javascript
+    let amountInput = document.getElementById('ico_request_amount');
+    if (amountInput) {
+      amountInput.addEventListener('change', function(e) {
+        let input = document.getElementById('ico_request_amount');
+
+        let amount = parseInt(input.value, 10);
+
+        let requiredETHElement = document.getElementById('required_eth');
+
+        if (!isNaN(amount) && amount >= 0) {
+          let requiredETH = amount * 0.000011;
+
+          requiredETHElement.innerHTML = ` 必要ETH数: ${requiredETH.toFixed(6)} ETH`;
+        } else {
+          requiredETHElement.innerHTML = '';
+        }
+      });
+    }
 
   %hr
   %address
