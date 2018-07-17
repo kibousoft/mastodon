@@ -41,6 +41,9 @@
     - if @ico_request.campaign_name.present?
       = f.hidden_field :campaign_name
 
+    - if @ico_request.language.present?
+      = f.hidden_field :language
+
     = f.button :submit, :class => 'button', id: 'ico-request-submit'
 
   :javascript
