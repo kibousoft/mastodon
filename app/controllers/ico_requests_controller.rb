@@ -13,6 +13,7 @@ class IcoRequestsController < ApplicationController
   # GET /ico_requests/new
   def new
     @ico_request = IcoRequest.new
+    @ico_request.campaign_name = params[:campaign]
   end
 
   # GET /ico_requests/1/edit
@@ -22,7 +23,7 @@ class IcoRequestsController < ApplicationController
   # POST /ico_requests
   def create
     unless ico_request_check_params[:check_1] && ico_request_check_params[:check_3] && ico_request_check_params[:check_4]
-      redirect_to new_ico_requests_path, notice: 'Please check confirm items'
+      redirect_to new_ico_requests_path(campaign: ico_request_params[:campaign_name]), notice: 'Please check confirm items'
       return
     end
     @ico_request = IcoRequest.new(ico_request_params)
@@ -63,7 +64,7 @@ class IcoRequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def ico_request_params
-      params.require(:ico_request).permit(:amount, :email, :eth_wallet_address, :token_wallet_address)
+      params.require(:ico_request).permit(:amount, :email, :eth_wallet_address, :token_wallet_address, :campaign_name)
     end
 
     def ico_request_check_params

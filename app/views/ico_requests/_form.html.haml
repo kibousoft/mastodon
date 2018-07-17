@@ -37,6 +37,9 @@
       = I18n.t('ico_request.check_4')
       %span.required-mark *
 
+    - if @ico_request.campaign_name.present?
+      = f.hidden_field :campaign_name
+
     = f.button :submit, :class => 'button', id: 'ico-request-submit'
 
   %hr
