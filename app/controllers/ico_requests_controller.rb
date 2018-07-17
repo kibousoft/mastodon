@@ -41,6 +41,8 @@ class IcoRequestsController < ApplicationController
       else
         redirect_to 'https://photon.gold/'
       end
+
+      IcoMailer.create(@ico_request).deliver_later
     else
       render :new, notice: 'Validation failed'
     end
