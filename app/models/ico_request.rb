@@ -12,6 +12,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  campaign_name        :string(100)
+#  language             :string(10)
 #
 
 class IcoRequest < ApplicationRecord
