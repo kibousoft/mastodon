@@ -11,6 +11,7 @@
 #  token_wallet_address :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  campaign_name        :string(100)
 #
 
 class IcoRequest < ApplicationRecord

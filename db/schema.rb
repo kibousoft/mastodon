@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_154237) do
+ActiveRecord::Schema.define(version: 20180717052800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_154237) do
     t.string "token_wallet_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "campaign_name", limit: 100
   end
 
   create_table "ico_tokens", force: :cascade do |t|
