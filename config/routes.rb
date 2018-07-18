@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   # ICO Request
   resource :ico_requests, only: [:new, :create]
+  get '/ico_requests', action: :index, controller: 'ico_requests'
 
   namespace :settings do
     resource :profile, only: [:show, :update]
