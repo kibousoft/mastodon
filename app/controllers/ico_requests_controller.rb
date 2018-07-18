@@ -3,7 +3,9 @@ class IcoRequestsController < ApplicationController
 
   # GET /ico_requests
   def index
-    @ico_requests = IcoRequest.all
+    current_account
+
+    @ico_requests = IcoRequest.where(email: @current_user.email)
   end
 
   # GET /ico_requests/1
