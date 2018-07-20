@@ -11,3 +11,4 @@ ja:
           email: メールアドレス
           eth_wallet_address: 入金元Etheriumアドレス
           token_wallet_address: PHOTON GOLD保存先ウォレットアドレス
+          created_at: 申込日
