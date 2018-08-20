@@ -42,7 +42,6 @@
 
 class User < ApplicationRecord
   include Settings::Extend
-  include Omniauthable
 
   ACTIVE_DURATION = 7.days
 
@@ -363,7 +362,7 @@ class User < ApplicationRecord
       user.password = password
       user.password_confirmation = password
       user.skip_confirmation!
-      user.create_account(username: username, display_name: display_name)
+      user.build_account(username: username, display_name: display_name)
       user.account.avatar_remote_url = avator_url if avator_url
     end
     user

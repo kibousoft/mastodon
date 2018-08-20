@@ -94,8 +94,8 @@ gem 'rdf-normalize', '~> 0.3'
 
 # Added by Kibousoft
 gem 'ruby-bbcode'
-gem 'omniauth-github'
-gem 'omniauth-facebook'
+gem 'omniauth-github', '~> 1.3.0'
+gem 'omniauth-facebook', '~> 4.0.0'
 gem 'react-rails-img'
 gem 'json'
 gem 'twitter-bootstrap-rails'
