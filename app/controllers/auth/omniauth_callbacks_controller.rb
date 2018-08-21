@@ -1,33 +1,42 @@
 # frozen_string_literal: true
 
 class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token
+  def facebook
+    # You need to implement the method below in your model (e.g. app/models/user.rb)
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
-  def self.provides_callback_for(provider)
-    provider_id = provider.to_s.chomp '_oauth2'
-
-    define_method provider do
-      @user = User.find_for_oauth(request.env['omniauth.auth'], current_user)
-
-      if @user.persisted?
-        sign_in_and_redirect @user, event: :authentication
-        set_flash_message(:notice, :success, kind: provider_id.capitalize) if is_navigational_format?
-      else
-        session["devise.#{provider}_data"] = request.env['omniauth.auth']
-        redirect_to new_user_registration_url
-      end
+    if @user.errors.any?
+      reason = @user.errors.full_messages.join(' / ')
+      set_flash_message(:alert, :failure, kind: "Facebook", reason: reason)
+      redirect_to new_user_session_path and return
     end
-  end
 
-  Devise.omniauth_configs.each_key do |provider|
-    provides_callback_for provider
-  end
-
-  def after_sign_in_path_for(resource)
-    if resource.email_verified?
-      root_path
+    if @user.present?
+      p "Login Success"
+      sign_in @user
+      redirect_to root_path
+      set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
     else
-      finish_signup_path
+      session["devise.facebook_data"] = request.env["omniauth.auth"]
+      redirect_to root_path
     end
+  end
+
+  def github
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if @user.present?
+      sign_in @user
+      set_flash_message(:notice, :success, :kind => "GitHub") if is_navigational_format?
+      redirect_to root_path and return
+    end
+
+    failure_reason = if @user.errors.any? @user.errors.full_messages.join(' / '); else nil end
+    set_flash_message(:notice, :failure, kind: "GitHub", reason: failure_reason)
+    redirect_to new_user_session_path
+  end
+
+  def failure
+    redirect_to root_path
   end
 end

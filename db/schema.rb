@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_154237) do
+ActiveRecord::Schema.define(version: 20180717073631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,36 @@ ActiveRecord::Schema.define(version: 2018_07_07_154237) do
     t.boolean "show_reblogs", default: true, null: false
     t.string "uri"
     t.index ["account_id", "target_account_id"], name: "index_follows_on_account_id_and_target_account_id", unique: true
+  end
+
+  create_table "ico_events", force: :cascade do |t|
+    t.integer "ico_token_id"
+    t.datetime "begin_at"
+    t.datetime "end_at"
+    t.float "sale_limit"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ico_requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "ico_event_id"
+    t.float "amount"
+    t.string "email"
+    t.string "eth_wallet_address"
+    t.string "token_wallet_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "campaign_name", limit: 100
+    t.string "language", limit: 10
+  end
+
+  create_table "ico_tokens", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
@@ -458,6 +488,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_154237) do
     t.bigint "account_id", null: false
     t.bigint "application_id"
     t.bigint "in_reply_to_account_id"
+    t.json "enquete"
     t.index ["account_id", "id", "visibility", "updated_at"], name: "index_statuses_20180106", order: { id: :desc }
     t.index ["in_reply_to_id"], name: "index_statuses_on_in_reply_to_id"
     t.index ["reblog_of_id", "account_id"], name: "index_statuses_on_reblog_of_id_and_account_id"
@@ -529,6 +560,8 @@ ActiveRecord::Schema.define(version: 2018_07_07_154237) do
     t.boolean "otp_required_for_login", default: false, null: false
     t.datetime "last_emailed_at"
     t.string "otp_backup_codes", array: true
+    t.string "provider"
+    t.string "uid"
     t.string "filtered_languages", default: [], null: false, array: true
     t.bigint "account_id", null: false
     t.boolean "disabled", default: false, null: false

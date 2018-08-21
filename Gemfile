@@ -92,6 +92,16 @@ gem 'webpush'
 gem 'json-ld', '~> 2.2'
 gem 'rdf-normalize', '~> 0.3'
 
+# Added by Kibousoft
+gem 'ruby-bbcode'
+gem 'omniauth-github', '~> 1.3.0'
+gem 'omniauth-facebook', '~> 4.0.0'
+gem 'react-rails-img'
+gem 'json'
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'jquery-rails'
+
 group :development, :test do
   gem 'fabrication', '~> 2.20'
   gem 'fuubar', '~> 2.2'

@@ -1,0 +1,23 @@
+- model_class = IcoRequest
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:amount)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:eth_wallet_address)
+      %th= model_class.human_attribute_name(:token_wallet_address)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @ico_requests.each do |ico_request|
+      %tr
+        %td= ico_request.id
+        %td= ico_request.amount
+        %td= ico_request.email
+        %td= ico_request.eth_wallet_address
+        %td= ico_request.token_wallet_address
+        %td=l ico_request.created_at
+
+= link_to t('.new', :default => t("helpers.links.new")), new_ico_requests_path, :class => 'btn btn-primary'

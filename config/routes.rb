@@ -74,6 +74,10 @@ Rails.application.routes.draw do
   get '/@:account_username/:id', to: 'statuses#show', as: :short_account_status
   get '/@:account_username/:id/embed', to: 'statuses#embed', as: :embed_short_account_status
 
+  # ICO Request
+  resource :ico_requests, only: [:new, :create]
+  get '/ico_requests', action: :index, controller: 'ico_requests'
+
   namespace :settings do
     resource :profile, only: [:show, :update]
     resource :preferences, only: [:show, :update]

@@ -1,0 +1,71 @@
+%div.ico-request
+  - flash.each do |key, value|
+    = content_tag :div, value, class: "alert"
+  = image_tag '/photon/logo.png'
+  %h1 Pre-ICO Request
+
+  - model_class = IcoRequest
+  = simple_form_for @ico_request, :html => { :class => 'form-horizontal' } do |f|
+    = model_class.human_attribute_name(:amount)
+    %span.required-mark *
+    %span#required_eth
+    = f.input :amount
+
+    = model_class.human_attribute_name(:email)
+    %span.required-mark *
+    = f.input :email
+
+    = model_class.human_attribute_name(:eth_wallet_address)
+    %span.required-mark *
+    = f.input :eth_wallet_address
+
+    = model_class.human_attribute_name(:token_wallet_address)
+    = f.input :token_wallet_address
+
+    %div.checkboxes
+      = check_box_tag "check_1"
+      = I18n.t('ico_request.check_1')
+      %span.required-mark *
+      %br
+      = check_box_tag "check_2"
+      = I18n.t('ico_request.check_2')
+      %br
+      = check_box_tag "check_3"
+      = I18n.t('ico_request.check_3')
+      %span.required-mark *
+      %br
+      = check_box_tag "check_4"
+      = I18n.t('ico_request.check_4')
+      %span.required-mark *
+
+    - if @ico_request.campaign_name.present?
+      = f.hidden_field :campaign_name
+
+    - if @ico_request.language.present?
+      = f.hidden_field :language
+
+    = f.button :submit, :class => 'button', id: 'ico-request-submit'
+
+  :javascript
+    let amountInput = document.getElementById('ico_request_amount');
+    if (amountInput) {
+      amountInput.addEventListener('change', function(e) {
+        let input = document.getElementById('ico_request_amount');
+
+        let amount = parseInt(input.value, 10);
+
+        let requiredETHElement = document.getElementById('required_eth');
+
+        if (!isNaN(amount) && amount >= 0) {
+          let requiredETH = amount * 0.000011;
+
+          requiredETHElement.innerHTML = ` 必要ETH数: ${requiredETH.toFixed(6)} ETH`;
+        } else {
+          requiredETHElement.innerHTML = '';
+        }
+      });
+    }
+
+  %hr
+  %address
+    = link_to "特定商取引法に基づく表示", "https://ja.photon.gold/tokusho.pdf"

@@ -29,6 +29,8 @@
 #  otp_required_for_login    :boolean          default(FALSE), not null
 #  last_emailed_at           :datetime
 #  otp_backup_codes          :string           is an Array
+#  provider                  :string
+#  uid                       :string
 #  filtered_languages        :string           default([]), not null, is an Array
 #  account_id                :bigint(8)        not null
 #  disabled                  :boolean          default(FALSE), not null
@@ -40,7 +42,6 @@
 
 class User < ApplicationRecord
   include Settings::Extend
-  include Omniauthable
 
   ACTIVE_DURATION = 7.days
 
@@ -49,13 +50,12 @@ class User < ApplicationRecord
 
   devise :two_factor_backupable,
          otp_number_of_backup_codes: 10
+  devise :omniauthable, { omniauth_providers: [:facebook , :github] }
 
   devise :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
   devise :pam_authenticatable if ENV['PAM_ENABLED'] == 'true'
-
-  devise :omniauthable
 
   belongs_to :account, inverse_of: :user
   belongs_to :invite, counter_cache: :uses, optional: true
@@ -309,6 +309,10 @@ class User < ApplicationRecord
     super
   end
 
+  def setting_auto_play_gif
+    settings.auto_play_gif
+  end
+
   protected
 
   def send_devise_notification(notification, *args)
@@ -341,5 +345,47 @@ class User < ApplicationRecord
 
   def needs_feed_update?
     last_sign_in_at < ACTIVE_DURATION.ago
+  end
+
+  def self.from_omniauth(auth)
+    uid = auth['uid']
+    provider = auth['provider']
+    email = auth['info']['email'] || ''
+    avator_url = auth['info']['image'] || ''
+
+    username = omniauth_username provider, uid
+    display_name = auth['info']['name'] || auth['info']['nickname'] || username
+
+    user = find_or_create_by(provider: provider, uid: uid) do |user|
+      password = Devise.friendly_token[0,20]
+      user.email = email
+      user.password = password
+      user.password_confirmation = password
+      user.skip_confirmation!
+      user.build_account(username: username, display_name: display_name)
+      user.account.avatar_remote_url = avator_url if avator_url
+    end
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  private_class_method
+
+  def self.omniauth_username(provider, uid)
+    name_prefix =
+      case provider
+        when 'facebook' then 'fb'
+        when 'github' then 'gh'
+        else nil
+      end
+    return nil unless name_prefix
+    "#{name_prefix}#{uid}"
   end
 end

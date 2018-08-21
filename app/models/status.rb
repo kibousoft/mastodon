@@ -23,6 +23,7 @@
 #  account_id             :bigint(8)        not null
 #  application_id         :bigint(8)
 #  in_reply_to_account_id :bigint(8)
+#  enquete                :json
 #
 
 class Status < ApplicationRecord
